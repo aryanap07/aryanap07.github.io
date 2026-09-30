@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Aryan Patel: B.Tech AI and Data Science student building autograd engines, blockchains and transformers from scratch.">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#EDF0F5" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#141A28" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Aryan Patel — Portfolio">
+<meta property="og:description" content="B.Tech AI and Data Science student building autograd engines, blockchains and transformers from scratch.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='6'%20fill='%232544F5'/%3E%3Ctext%20x='16'%20y='23'%20font-size='20'%20font-weight='800'%20text-anchor='middle'%20fill='white'%20font-family='sans-serif'%3EA%3C/text%3E%3C/svg%3E">
+<title>Aryan Patel - Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;display=swap" rel="stylesheet">
+<style>
+/* ---------- Tokens ---------- */
+:root{
+  --bg:#EDF0F5; --ink:#172033; --mute:#5A6479; --line:#C9D0DD; --acc:#2544F5; --panel:#F7F9FC;
+  --gutter:clamp(16px,5vw,40px);          /* side padding: 16px phones → 40px laptops */
+  --space:clamp(36px,7vw,72px);           /* vertical section rhythm */
+  --grid:.055;                            /* grid line strength: light theme */
+  --tap:44px;                             /* minimum touch target */
+  --font:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#141A28;--ink:#E7EBF4;--mute:#9AA5BD;--line:#2B3550;--acc:#7C93FF;--panel:#1B2336;--grid:.04}
+}
+:root[data-theme="dark"]{--bg:#141A28;--ink:#E7EBF4;--mute:#9AA5BD;--line:#2B3550;--acc:#7C93FF;--panel:#1B2336;--grid:.04}
+
+/* ---------- Base ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 16px)}
+body{
+  margin:0;min-height:100vh;min-height:100dvh;
+  background:var(--bg);color:var(--ink);
+  font:400 clamp(16px,1.1vw + 13px,18px)/1.6 var(--font);
+  -webkit-font-smoothing:antialiased;overflow-wrap:break-word;
+}
+/* Fixed grid backdrop on its own layer (avoids janky background-attachment on iOS) */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:var(--grid);
+  background-image:linear-gradient(var(--ink) 1px,transparent 1px),linear-gradient(90deg,var(--ink) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+a{color:var(--acc)}
+@media (hover:hover){.links a:hover span{text-decoration-thickness:2px}.site-footer a:hover{text-decoration-thickness:2px}}
+.links a{-webkit-tap-highlight-color:transparent}
+.links a:active span{opacity:.7}
+main:focus{outline:none}
+a:focus-visible,input:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--bg);padding:10px 14px;z-index:10}
+.skip:focus{left:8px}
+
+/* ---------- Page container (respects notches / landscape safe areas) ---------- */
+.wrap{
+  width:100%;max-width:1120px;margin-inline:auto;
+  padding-inline:max(var(--gutter),env(safe-area-inset-left,0px)) max(var(--gutter),env(safe-area-inset-right,0px));
+}
+.top-inset{height:env(safe-area-inset-top,0px)}
+
+/* ---------- Type ---------- */
+h1{font-weight:800;font-size:clamp(2.5rem,9vw + .5rem,5.5rem);line-height:1;letter-spacing:-.03em;margin:0 0 .35em}
+h2{font-weight:800;font-size:clamp(1.55rem,2.2vw + 1rem,2.2rem);letter-spacing:-.02em;line-height:1.15;margin:0 0 .7em}
+h3{margin:0;font-size:1.2rem;font-weight:600;line-height:1.3}
+strong{font-weight:600}
+.lede{font-size:clamp(1.1rem,1.6vw + .8rem,1.5rem);line-height:1.45;max-width:34em;margin:0 0 1.2em;color:var(--mute)}
+.lede b{color:var(--ink);font-weight:600}
+
+/* ---------- Header ---------- */
+.site-header{padding-block:clamp(40px,10vw,112px) var(--space)}
+.links{display:flex;flex-direction:column;gap:2px;margin:0;padding:0;list-style:none;font-weight:600}
+.links a{display:inline-flex;align-items:center;gap:10px;min-height:var(--tap);text-decoration:none;overflow-wrap:anywhere}
+.links a span{text-decoration:underline;text-underline-offset:4px}
+.links svg{width:20px;height:20px;flex:none}
+.links svg.s{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.links svg.f{fill:currentColor}
+
+/* ---------- Sections ---------- */
+.section{padding-block:var(--space);border-top:1px solid var(--line)}
+
+/* ---------- Demo ---------- */
+.demo{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;background:var(--panel);border:1px solid var(--line);padding:clamp(16px,3vw,32px)}
+.demo p{margin:0;max-width:38em}
+.ctl{display:grid;grid-template-columns:minmax(0,1fr);gap:0;margin-top:12px}
+.ctl .lab{display:flex;justify-content:space-between;font-weight:600;margin-top:8px}
+.ctl output{font-variant-numeric:tabular-nums}
+.ctl input[type=range]{width:100%;min-height:var(--tap);margin:0;accent-color:var(--acc);touch-action:pan-y}
+.graph{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-content:start}
+.graph noscript{grid-column:1/-1}
+.node{border:1px solid var(--line);padding:8px 10px;background:var(--bg);min-width:0}
+.node small{display:block;color:var(--mute)}
+.node .v{font-weight:800;font-size:1.25rem;font-variant-numeric:tabular-nums}
+.node .g{color:var(--acc);font-weight:600;font-variant-numeric:tabular-nums}
+
+/* ---------- Projects ---------- */
+.projects{display:grid;grid-template-columns:minmax(0,1fr)}
+.proj{display:grid;grid-template-columns:minmax(0,1fr);gap:8px;padding-block:22px;border-bottom:1px solid var(--line)}
+.proj:first-child{padding-top:0}
+.proj:last-child{border-bottom:0;padding-bottom:0}
+.stack{color:var(--acc);font-weight:600;font-size:.95rem}
+.proj ul{margin:0;padding-left:1.1em;max-width:44em}
+.proj li+li{margin-top:.4em}
+
+/* ---------- Education ---------- */
+.row{display:flex;flex-direction:column;gap:2px;padding-block:14px;border-bottom:1px solid var(--line)}
+.row:first-of-type{padding-top:0}
+.row:last-child{border-bottom:0;padding-bottom:0}
+.row span{color:var(--mute)}
+.row .desc{margin:4px 0 0;color:var(--mute);font-size:.95em;max-width:44em}
+
+/* ---------- Skills ---------- */
+dl{display:grid;grid-template-columns:minmax(0,1fr);gap:0;margin:0}
+dt{font-weight:600;margin-top:16px}
+dt:first-child{margin-top:0}
+dd{margin:0;color:var(--mute)}
+
+/* ---------- Footer ---------- */
+.site-footer{border-top:1px solid var(--line);padding-block:24px calc(48px + env(safe-area-inset-bottom,0px));color:var(--mute)}
+.site-footer p{margin:0;max-width:40em}
+
+/* ---------- Roomy phones (≥ 380px) ---------- */
+@media (min-width:380px){.graph{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* ---------- Tablet (≥ 640px) ---------- */
+@media (min-width:640px){
+  .links{flex-direction:row;flex-wrap:wrap;gap:0 28px}
+  .row{flex-direction:row;justify-content:space-between;align-items:baseline;gap:24px}
+  .row span{white-space:nowrap}
+  dl{grid-template-columns:200px minmax(0,1fr);gap:14px 32px}
+  dt,dt:first-child{margin-top:0}
+}
+
+/* ---------- Laptop (≥ 960px) ---------- */
+@media (min-width:960px){
+  .demo{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:40px;align-items:start}
+  .proj{grid-template-columns:240px 1fr;gap:0 40px}
+  .site-header .lede{max-width:30em}
+}
+
+/* ---------- Large screens (≥ 1400px) ---------- */
+@media (min-width:1400px){.wrap{max-width:1200px}}
+
+/* ---------- Short landscape phones ---------- */
+@media (max-height:480px) and (orientation:landscape){.site-header{padding-top:32px}}
+
+/* ---------- Preferences ---------- */
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+@media print{:root:root{--bg:#fff;--ink:#000;--mute:#333;--line:#999;--acc:#000;--panel:#fff}body::before{display:none}.demo{break-inside:avoid}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="top-inset" aria-hidden="true"></div>
+
+<header class="site-header wrap">
+  <h1>Aryan Patel</h1>
+  <p class="lede">Second-year B.Tech student in AI and Data Science at Jabalpur Engineering College. I learn by <b>building the machinery from scratch</b>: autograd engines, blockchains, transformers.</p>
+  <nav aria-label="Contact">
+    <ul class="links">
+      <li><a href="mailto:aryan.timeless@proton.me"><svg class="s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>aryan.timeless@proton.me</span></a></li>
+      <li><a href="https://github.com/aryanap07" rel="noopener"><svg class="f" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a></li>
+      <li><a href="tel:+917722949267"><svg class="s" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+91 77229 49267</span></a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <section class="section" aria-labelledby="demo-h">
+    <div class="wrap">
+      <h2 id="demo-h">Backward pass, in miniature</h2>
+      <div class="demo">
+        <div>
+          <p>My framework NeuralFabric computes gradients with reverse-mode autodiff. Here is the same idea on one neuron, out = tanh(w·x + b). Move the sliders and watch each gradient (blue) flow back from the output.</p>
+          <div class="ctl">
+            <div class="lab"><label for="x">x</label><output id="ox" for="x" aria-live="off"></output></div>
+            <input id="x" type="range" min="-3" max="3" step="0.1" value="1.5">
+            <div class="lab"><label for="w">w</label><output id="ow" for="w" aria-live="off"></output></div>
+            <input id="w" type="range" min="-3" max="3" step="0.1" value="0.8">
+            <div class="lab"><label for="b">b</label><output id="ob" for="b" aria-live="off"></output></div>
+            <input id="b" type="range" min="-3" max="3" step="0.1" value="-0.5">
+          </div>
+        </div>
+        <div class="graph" id="graph" role="group" aria-label="Values and gradients for each node"><noscript><p>Turn on JavaScript to try the interactive demo.</p></noscript></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="proj-h">
+    <div class="wrap">
+      <h2 id="proj-h">Projects</h2>
+      <div class="projects">
+        <article class="proj"><div><h3>NeuralFabric</h3><div class="stack">Python, NumPy</div></div>
+          <ul><li>A deep learning framework built from scratch with tensor operations, a dynamic computational graph and reverse-mode automatic differentiation.</li><li>Autograd is checked against numerical gradients with Pytest; typing is enforced with MyPy.</li></ul></article>
+        <article class="proj"><div><h3>Kryptika</h3><div class="stack">ECDSA, P2P, HTTP</div></div>
+          <ul><li>A blockchain in pure Python: SHA-256 hashing, Proof-of-Work, ECDSA-signed transactions and chain validation.</li><li>Adds P2P peer discovery, a mempool, SQLite storage and a web chain explorer. Released v1.2.0 under the MIT license.</li></ul></article>
+        <article class="proj"><div><h3>DoorDarshan</h3><div class="stack">FastAPI, WebSocket, WebRTC</div></div>
+          <ul><li>A real-time video conferencing platform with WebSocket signaling and browser-native WebRTC.</li><li>Authenticated rooms, screen sharing, in-meeting chat and scheduling, stored in PostgreSQL.</li></ul></article>
+        <article class="proj"><div><h3>Timeless</h3><div class="stack">PyTorch, Transformers</div></div>
+          <ul><li>A decoder-only Transformer language model with multi-head self-attention, residual connections and normalization.</li><li>Includes a pretraining pipeline and an instruction-tuning workflow for text classification.</li></ul></article>
+        <article class="proj"><div><h3>AdityaL1-MAG</h3><div class="stack">Python, Signal Processing</div></div>
+          <ul><li>A pipeline that ingests, filters and visualizes Level-2 magnetometer data from ISRO's Aditya-L1 spacecraft.</li></ul></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="edu-h">
+    <div class="wrap">
+      <h2 id="edu-h">Education</h2>
+      <div class="row"><strong>B.Tech, Artificial Intelligence and Data Science, Jabalpur Engineering College</strong><span>Aug 2025 – Jun 2029</span></div>
+      <div class="row"><strong>Higher Secondary, Mathematics and Computer Science, Stemfield International School</strong><span>Apr 2011 – Mar 2025</span></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="awd-h">
+    <div class="wrap">
+      <h2 id="awd-h">Awards and honours</h2>
+      <div class="row"><div><strong>Finalist, RAGNAROK Hackathon (Google Developer Groups)</strong><p class="desc">Selected as a finalist in a competitive hackathon focused on technical problem-solving and rapid project development.</p></div><span>Jan 2026</span></div>
+      <div class="row"><div><strong>Machine Learning Specialization, DeepLearning.AI</strong><p class="desc">Completed coursework covering supervised learning, neural networks, model optimization and regularization.</p></div><span>Jul 2026</span></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="sk-h">
+    <div class="wrap">
+      <h2 id="sk-h">Skills</h2>
+      <dl>
+        <dt>Languages</dt><dd>Python, C, C++, Go, R</dd>
+        <dt>Systems and backend</dt><dd>FastAPI, Flask, REST APIs, WebSockets, WebRTC, PostgreSQL, SQLite, P2P networking, concurrency</dd>
+        <dt>Machine learning</dt><dd>PyTorch, TensorFlow/Keras, Scikit-learn, NumPy, Pandas, Matplotlib</dd>
+        <dt>Engineering</dt><dd>Git, GitHub, Docker, CI/CD, Pytest, MyPy</dd>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Want to work together? Email <a href="mailto:aryan.timeless@proton.me">aryan.timeless@proton.me</a>. Based in Jabalpur, India.</p>
+  </div>
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const fix = (n, d) => { const t = n.toFixed(d); return /^-0\.?0*$/.test(t) ? t.slice(1) : t; };
+const f = n => fix(n, 2);
+function run(){
+  const x = +$('x').value, w = +$('w').value, b = +$('b').value;
+  $('ox').textContent = fix(x, 1);
+  $('ow').textContent = fix(w, 1);
+  $('ob').textContent = fix(b, 1);
+  const m = w * x, s = m + b, o = Math.tanh(s);
+  const gs = 1 - o * o, gw = gs * x, gx = gs * w;
+  const N = (l, v, g) => `<div class="node"><small>${l}</small><div class="v">${f(v)}</div><div class="g">grad ${f(g)}</div></div>`;
+  $('graph').innerHTML = N('w·x', m, gs) + N('w·x + b', s, gs) + N('tanh → out', o, 1) + N('x', x, gx) + N('w', w, gw) + N('b', b, gs);
+}
+['x', 'w', 'b'].forEach(i => $(i).addEventListener('input', run));
+run();
+</script>
+</body>
+</html>
