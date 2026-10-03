@@ -162,6 +162,7 @@ dd{margin:0;color:var(--mute)}
     <ul class="links">
       <li><a href="mailto:aryan.timeless@proton.me"><svg class="s" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><span>aryan.timeless@proton.me</span></a></li>
       <li><a href="https://github.com/aryanap07" rel="noopener"><svg class="f" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>GitHub</span></a></li>
+      <li><a href="https://linkedin.com/in/aryan-supreme" rel="noopener"><svg class="f" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg><span>LinkedIn</span></a></li>
       <li><a href="tel:+917722949267"><svg class="s" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span>+91 77229 49267</span></a></li>
     </ul>
   </nav>
@@ -194,15 +195,26 @@ dd{margin:0;color:var(--mute)}
       <h2 id="proj-h">Projects</h2>
       <div class="projects">
         <article class="proj"><div><h3>NeuralFabric</h3><div class="stack">Python, NumPy</div></div>
-          <ul><li>A deep learning framework built from scratch with tensor operations, a dynamic computational graph and reverse-mode automatic differentiation.</li><li>Autograd is checked against numerical gradients with Pytest; typing is enforced with MyPy.</li></ul></article>
-        <article class="proj"><div><h3>Kryptika</h3><div class="stack">ECDSA, P2P, HTTP</div></div>
-          <ul><li>A blockchain in pure Python: SHA-256 hashing, Proof-of-Work, ECDSA-signed transactions and chain validation.</li><li>Adds P2P peer discovery, a mempool, SQLite storage and a web chain explorer. Released v1.2.0 under the MIT license.</li></ul></article>
+          <ul><li>Built a modular machine learning framework from first principles using Python and NumPy, implementing tensor
+          operations, reverse-mode automatic differentiation, and foundational regression models.</li><li>Developed numerical-gradient tests with Pytest to validate autograd correctness, enforced static typing with
+          MyPy, and structured the project for open-source distribution with modern Python packaging and GitHub
+          Actions.</li></ul></article>
         <article class="proj"><div><h3>DoorDarshan</h3><div class="stack">FastAPI, WebSocket, WebRTC</div></div>
-          <ul><li>A real-time video conferencing platform with WebSocket signaling and browser-native WebRTC.</li><li>Authenticated rooms, screen sharing, in-meeting chat and scheduling, stored in PostgreSQL.</li></ul></article>
+          <ul><li>Engineered a real-time video conferencing platform using FastAPI, WebSockets, and browser-native WebRTC
+          for live audio/video communication, screen sharing, and peer signaling.</li><li>Implemented JWT-authenticated meeting rooms, participant management, in-meeting chat, and meeting schedul
+          ing with PostgreSQL persistence using SQLAlchemy and Alembic.</li></ul></article>
+        <article class="proj"><div><h3>Kryptika</h3><div class="stack">ECDSA, P2P, HTTP</div></div>
+          <ul><li>Implemented ablockchain from scratch in pure Python, covering SHA-256 hashing, Proof of Work, ECDSA-signed
+          transactions, transaction validation, and longest-chain consensus.</li><li>Engineered P2P networking, persistent mempool and blockchain storage with SQLite, thread-safe HTTP com
+          munication, and a browser-based dashboard with a visual chain explorer.</li></ul></article>
         <article class="proj"><div><h3>Timeless</h3><div class="stack">PyTorch, Transformers</div></div>
-          <ul><li>A decoder-only Transformer language model with multi-head self-attention, residual connections and normalization.</li><li>Includes a pretraining pipeline and an instruction-tuning workflow for text classification.</li></ul></article>
+          <ul><li>Built a decoder-only Transformer language model from scratch in PyTorch, implementing tokenization, causal
+          self-attention, multi-head attention, residual connections, and normalization.</li><li>Developed an end-to-end LLM workflow covering pretraining on unlabeled text, model checkpointing, text
+          classification fine-tuning, and instruction tuning for downstream tasks.</li></ul></article>
         <article class="proj"><div><h3>AdityaL1-MAG</h3><div class="stack">Python, Signal Processing</div></div>
-          <ul><li>A pipeline that ingests, filters and visualizes Level-2 magnetometer data from ISRO's Aditya-L1 spacecraft.</li></ul></article>
+          <ul><li>Developed a data-analysis pipeline for ISRO’s Aditya-L1 MAG observations, including data ingestion, filtering,
+          and visualization of spacecraft magnetic-field measurements.</li><li>Performed magnetic-field characterization and exploratory analysis to identify patterns and variations in the
+          observed environment.</li></ul></article>
       </div>
     </div>
   </section>
@@ -210,7 +222,7 @@ dd{margin:0;color:var(--mute)}
   <section class="section" aria-labelledby="edu-h">
     <div class="wrap">
       <h2 id="edu-h">Education</h2>
-      <div class="row"><strong>B.Tech, Artificial Intelligence and Data Science, Jabalpur Engineering College</strong><span>Aug 2025 – Jun 2029</span></div>
+      <div class="row"><div><strong>B.Tech, Artificial Intelligence and Data Science, Jabalpur Engineering College</strong><p class="desc">Second year (sophomore)</p></div><span>Aug 2025 – Jun 2029</span></div>
       <div class="row"><strong>Higher Secondary, Mathematics and Computer Science, Stemfield International School</strong><span>Apr 2011 – Mar 2025</span></div>
     </div>
   </section>
@@ -218,8 +230,8 @@ dd{margin:0;color:var(--mute)}
   <section class="section" aria-labelledby="awd-h">
     <div class="wrap">
       <h2 id="awd-h">Awards and Honours</h2>
-      <div class="row"><div><strong>Finalist, RAGNAROK Hackathon (Google Developer Groups)</strong><p class="desc">Selected as a finalist in a competitive hackathon focused on technical problem-solving and rapid project development.</p></div><span>Jan 2026</span></div>
       <div class="row"><div><strong>Machine Learning Specialization, DeepLearning.AI</strong><p class="desc">Completed coursework covering supervised learning, neural networks, model optimization and regularization.</p></div><span>Jul 2026</span></div>
+      <div class="row"><div><strong>Finalist, RAGNAROK Hackathon (Google Developer Groups)</strong><p class="desc">Selected as a finalist in a competitive hackathon for technical problem-solving and rapid project development.</p></div><span>Jan 2026</span></div>
     </div>
   </section>
 
@@ -227,11 +239,11 @@ dd{margin:0;color:var(--mute)}
     <div class="wrap">
       <h2 id="sk-h">Technical Skills</h2>
       <dl>
-        <dt>Languages</dt><dd>Python, C, C++, Go, R</dd>
-        <dt>Systems and backend</dt><dd> FastAPI, Flask, REST APIs, WebSockets, WebRTC, SQLAlchemy, Alembic, PostgreSQL,
-          P2P Networking, Concurrent Programming</dd>
-        <dt>Machine learning</dt><dd>PyTorch, TensorFlow/Keras, Scikit-learn, NumPy, Pandas, Matplotlib, Seaborn</dd>
-        <dt>Engineering</dt><dd>Linux, Git, GitHub, Docker, CI/CD, Ruff, Pytest, MyPy</dd>
+        <dt>Languages</dt><dd>Python, C, C++, Java, Go, SQL, R</dd>
+        <dt>Backend</dt><dd>FastAPI, REST APIs, WebSockets, WebRTC, SQLAlchemy</dd>
+        <dt>Databases and storage</dt><dd>MySQL, PostgreSQL</dd>
+        <dt>Machine learning</dt><dd>PyTorch, TensorFlow, Scikit-learn, NumPy, Pandas</dd>
+        <dt>Engineering</dt><dd>Linux, Git, GitHub, Docker, GitHub Actions</dd>
       </dl>
     </div>
   </section>
