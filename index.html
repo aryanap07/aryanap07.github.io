@@ -22,7 +22,6 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Non-blocking: text paints immediately in the fallback font, then swaps -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;display=swap" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&amp;display=swap"></noscript>
 
@@ -148,7 +147,6 @@
 
     .site-header { padding-block: clamp(40px, 10vw, 112px) var(--space); }
 
-    /* Icons: .s = stroked, .f = filled */
     .ico { width: 20px; height: 20px; flex: none; }
     .ico.s { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .ico.f { fill: currentColor; }
@@ -311,7 +309,6 @@
       .site-header { padding-top: 0; }
       .demo, .proj, .row { break-inside: avoid; }
 
-      /* Browsers drop background colours when printing, so the filled button must not rely on one */
       .resume { min-height: 0; padding: 0; background: none; color: var(--ink); }
 
       .links a[href^="http"]::after,
@@ -609,14 +606,12 @@
 
   <script type="module">
     const $ = id => document.getElementById(id);
-    // toFixed, but never print a negative zero ("-0.0" -> "0.0")
     const fmt = (n, d) => n.toFixed(d).replace(/^-(?=0\.?0*$)/, '');
 
     const ids = ['x', 'w', 'b'];
     const inputs = ids.map($);
     const outputs = ids.map(id => $('o' + id));
 
-    // One card per graph node, in display order: [value element, gradient element]
     const frag = document.createDocumentFragment();
     const cells = ['w·x', 'w·x + b', 'tanh → out', 'x', 'w', 'b'].map(label => {
       const node = frag.appendChild(document.createElement('div'));
@@ -628,14 +623,13 @@
 
     function render() {
       const [x, w, b] = inputs.map(el => +el.value);
-      const m = w * x;       // w·x
-      const s = m + b;       // w·x + b
+      const m = w * x;
+      const s = m + b;
       const o = Math.tanh(s);
-      const d = 1 - o * o;   // d(out)/d(s)
+      const d = 1 - o * o;
 
       [x, w, b].forEach((v, i) => { outputs[i].textContent = fmt(v, 1); });
 
-      // [value, gradient] per node, same order as the cards above
       [[m, d], [s, d], [o, 1], [x, d * w], [w, d * x], [b, d]].forEach(([value, grad], i) => {
         cells[i][0].textContent = fmt(value, 2);
         cells[i][1].textContent = `grad ${fmt(grad, 2)}`;
