@@ -36,11 +36,9 @@
       --acc: #2544F5;
       --panel: #F7F9FC;
       --grid: .055;
-
       --gutter: clamp(16px, 5vw, 40px);
       --space: clamp(36px, 7vw, 72px);
       --tap: 44px;
-
       --font: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     }
 
@@ -151,8 +149,7 @@
     .ico.s { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .ico.f { fill: currentColor; }
 
-    .links a,
-    .resume {
+    .links a, .resume {
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -254,11 +251,10 @@
       border-top: 1px solid var(--line);
       color: var(--mute);
     }
-    .site-footer p { max-width: 40em; margin: 0; }
+    .site-footer p { margin: 0; font-size: clamp(.875rem, 1.9vw, 1.0625rem); }
 
     @media (hover: hover) {
-      .links a:hover span,
-      .site-footer a:hover { text-decoration-thickness: 2px; }
+      .links a:hover span, .site-footer a:hover { text-decoration-thickness: 2px; }
       .resume:hover { background: var(--ink); }
     }
 
@@ -295,7 +291,7 @@
     @media print {
       @page { margin: 16mm; }
 
-      :root:root {
+      :root {
         --bg: #fff;
         --ink: #000;
         --mute: #333;
@@ -605,10 +601,7 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <p>
-        Want to work together? Email <a href="mailto:aryan.timeless@proton.me">aryan.timeless@proton.me</a>.
-        Based in Jabalpur, Madhya Pradesh, India.
-      </p>
+      <p>Want to work together? Email <a href="mailto:aryan.timeless@proton.me">aryan.timeless@proton.me</a>. Based in Jabalpur, Madhya Pradesh, India.</p>
     </div>
   </footer>
 
@@ -644,7 +637,10 @@
       });
     }
 
-    document.querySelector('.ctl').addEventListener('input', render);
+    let frame = 0;
+    document.querySelector('.ctl').addEventListener('input', () => {
+      if (!frame) frame = requestAnimationFrame(() => { frame = 0; render(); });
+    });
     render();
   </script>
 </body>
