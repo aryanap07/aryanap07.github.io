@@ -36,8 +36,8 @@
       --acc: #2544F5;
       --panel: #F7F9FC;
       --grid: .055;
-      --gutter: clamp(16px, 5vw, 40px);
-      --space: clamp(36px, 7vw, 72px);
+      --gutter: clamp(1rem, 5vw, 2.5rem);
+      --space: clamp(2.25rem, 7vw, 4.5rem);
       --tap: 44px;
       --font: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     }
@@ -91,6 +91,8 @@
     main:focus { outline: none; }
     a:focus-visible, input:focus-visible { outline: 3px solid var(--acc); outline-offset: 3px; }
 
+    .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
     .skip {
       position: absolute;
       left: -999px;
@@ -104,7 +106,7 @@
 
     .wrap {
       width: 100%;
-      max-width: 1120px;
+      max-width: 70rem;
       margin-inline: auto;
       padding-inline:
         max(var(--gutter), env(safe-area-inset-left, 0px))
@@ -143,13 +145,13 @@
       line-height: 1.45;
     }
 
-    .site-header { padding-block: clamp(40px, 10vw, 112px) var(--space); }
+    .site-header { padding-block: clamp(2.5rem, 10vw, 7rem) var(--space); }
 
-    .ico { width: 20px; height: 20px; flex: none; }
+    .ico { width: 1.25rem; height: 1.25rem; flex: none; }
     .ico.s { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
     .ico.f { fill: currentColor; }
 
-    .links a, .resume {
+    .links a, .resume, .repo {
       display: inline-flex;
       align-items: center;
       gap: 10px;
@@ -168,8 +170,8 @@
       font-weight: 600;
     }
     .links a { overflow-wrap: anywhere; }
-    .links a span { text-decoration: underline; text-underline-offset: 4px; }
-    .links a:active span { opacity: .7; }
+    .links a span, .repo span { text-decoration: underline; text-underline-offset: 4px; }
+    .links a:active span, .repo:active span { opacity: .7; }
 
     .resume {
       margin-bottom: 20px;
@@ -184,7 +186,7 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr);
       gap: 24px;
-      padding: clamp(16px, 3vw, 32px);
+      padding: clamp(1rem, 3vw, 2rem);
       background: var(--panel);
       border: 1px solid var(--line);
     }
@@ -229,6 +231,8 @@
 
     .stack { color: var(--acc); font-weight: 600; font-size: .95rem; }
 
+    .repo { margin-top: 4px; font-weight: 600; font-size: .95rem; }
+
     .row {
       display: flex;
       flex-direction: column;
@@ -251,14 +255,14 @@
       border-top: 1px solid var(--line);
       color: var(--mute);
     }
-    .site-footer p { margin: 0; font-size: clamp(.875rem, 1.9vw, 1.0625rem); }
+    .site-footer p { margin: 0; font-size: clamp(.9375rem, 1.9vw, 1.0625rem); }
 
     @media (hover: hover) {
-      .links a:hover span, .site-footer a:hover { text-decoration-thickness: 2px; }
+      .links a:hover span, .repo:hover span, .site-footer a:hover { text-decoration-thickness: 2px; }
       .resume:hover { background: var(--ink); }
     }
 
-    @media (min-width: 380px) {
+    @media (min-width: 480px) {
       .graph { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
 
@@ -266,18 +270,26 @@
       .links { flex-direction: row; flex-wrap: wrap; gap: 0 28px; }
       .row { flex-direction: row; justify-content: space-between; align-items: baseline; gap: 24px; }
       .row span { white-space: nowrap; }
-      dl { grid-template-columns: 200px minmax(0, 1fr); gap: 14px 32px; }
+      dl { grid-template-columns: 12.5rem minmax(0, 1fr); gap: 14px 32px; }
       dt { margin-top: 0; }
     }
 
     @media (min-width: 960px) {
       .demo { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 40px; align-items: start; }
-      .proj { grid-template-columns: 240px minmax(0, 1fr); gap: 0 40px; }
+      .proj { grid-template-columns: 15rem minmax(0, 1fr); gap: 0 40px; }
       .site-header .lede { max-width: 30em; }
     }
 
     @media (min-width: 1400px) {
-      .wrap { max-width: 1200px; }
+      .wrap { max-width: 75rem; }
+    }
+
+    @media (min-width: 1920px) {
+      html { font-size: 125%; }
+    }
+
+    @media (min-width: 2560px) {
+      html { font-size: 150%; }
     }
 
     @media (max-height: 480px) and (orientation: landscape) {
@@ -305,9 +317,11 @@
       .site-header { padding-top: 0; }
       .demo, .proj, .row { break-inside: avoid; }
 
-      .resume { min-height: 0; padding: 0; background: none; color: var(--ink); }
+      .resume, .repo { min-height: 0; }
+      .resume { padding: 0; background: none; color: var(--ink); }
 
       .links a[href^="http"]::after,
+      .repo::after,
       .resume::after {
         content: " (" attr(href) ")";
         font-weight: 400;
@@ -318,6 +332,12 @@
 </head>
 
 <body>
+
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="gh" viewBox="0 0 16 16">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+    </symbol>
+  </svg>
 
   <a class="skip" href="#main">Skip to content</a>
 
@@ -352,9 +372,7 @@
         </li>
         <li>
           <a href="https://github.com/aryanap07" aria-label="GitHub, @aryanap07" target="_blank" rel="noopener noreferrer">
-            <svg class="ico f" viewBox="0 0 16 16" aria-hidden="true">
-              <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
-            </svg>
+            <svg class="ico f" aria-hidden="true"><use href="#gh"/></svg>
             <span>@aryanap07</span>
           </a>
         </li>
@@ -472,6 +490,7 @@
             <div>
               <h3>NeuralFabric</h3>
               <div class="stack">Python, NumPy</div>
+              <a class="repo" href="https://github.com/aryanap07/neuralfabric" target="_blank" rel="noopener noreferrer" aria-label="NeuralFabric Source Code on GitHub"><svg class="ico f" aria-hidden="true"><use href="#gh"/></svg><span>Source Code</span></a>
             </div>
             <ul>
               <li>Built a modular machine learning framework from first principles using Python and NumPy, implementing tensor operations, reverse-mode automatic differentiation, and foundational regression models.</li>
@@ -483,6 +502,7 @@
             <div>
               <h3>DoorDarshan</h3>
               <div class="stack">FastAPI, WebSocket, WebRTC</div>
+              <a class="repo" href="https://github.com/aryanap07/doordarshan" target="_blank" rel="noopener noreferrer" aria-label="DoorDarshan Source Code on GitHub"><svg class="ico f" aria-hidden="true"><use href="#gh"/></svg><span>Source Code</span></a>
             </div>
             <ul>
               <li>Engineered a real-time video conferencing platform using FastAPI, WebSockets, and browser-native WebRTC for live audio/video communication, screen sharing, and peer signaling.</li>
@@ -494,6 +514,7 @@
             <div>
               <h3>Kryptika</h3>
               <div class="stack">ECDSA, P2P, HTTP</div>
+              <a class="repo" href="https://github.com/aryanap07/Kryptika" target="_blank" rel="noopener noreferrer" aria-label="Kryptika Source Code on GitHub"><svg class="ico f" aria-hidden="true"><use href="#gh"/></svg><span>Source Code</span></a>
             </div>
             <ul>
               <li>Implemented a blockchain from scratch in pure Python, covering SHA-256 hashing, Proof of Work, ECDSA-signed transactions, transaction validation, and longest-chain consensus.</li>
@@ -505,6 +526,7 @@
             <div>
               <h3>Timeless</h3>
               <div class="stack">PyTorch, Transformers</div>
+              <a class="repo" href="https://github.com/aryanap07/Timeless" target="_blank" rel="noopener noreferrer" aria-label="Timeless Source Code on GitHub"><svg class="ico f" aria-hidden="true"><use href="#gh"/></svg><span>Source Code</span></a>
             </div>
             <ul>
               <li>Built a decoder-only Transformer language model from scratch in PyTorch, implementing tokenization, causal self-attention, multi-head attention, residual connections, and normalization.</li>
@@ -516,6 +538,7 @@
             <div>
               <h3>AdityaL1-MAG</h3>
               <div class="stack">Python, Signal Processing</div>
+              <a class="repo" href="https://github.com/aryanap07/AdityaL1-MAG" target="_blank" rel="noopener noreferrer" aria-label="AdityaL1-MAG Source Code on GitHub"><svg class="ico f" aria-hidden="true"><use href="#gh"/></svg><span>Source Code</span></a>
             </div>
             <ul>
               <li>Developed a data-analysis pipeline for ISRO’s Aditya-L1 MAG observations, including data ingestion, filtering, and visualization of spacecraft magnetic-field measurements.</li>
