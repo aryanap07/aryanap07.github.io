@@ -1,3 +1,3 @@
 ## Portfolio
 
-[**Visit my Portfolio!**](https://aryanap07.github.io/)
+[**Visit my Portfolio!**](https://aryan29.xyz/)
