@@ -1,3 +1,1 @@
-## Portfolio
-
-[**Visit my Portfolio!**](https://aryan29.xyz/)
+## [Visit my Portfolio!](https://aryan29.xyz/)
